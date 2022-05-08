@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.box{
+    width: 600px;
+    margin: 20px auto;
+    border: 3px solid red;
+    
+}
+.content{
+    font-size: 30px;
+    font-weight: bold;
+    border: 6px solid green;
+    padding: 10px;
+}
