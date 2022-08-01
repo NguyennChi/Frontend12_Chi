@@ -8,24 +8,23 @@ $( document ).ready(function() {
     // Giá coin
     showCoin();
 
-        // Giá coin
+    // Thời tiết
         showWeather();
-
+    
     // Đổ danh sách bài viết trong một category nào đó
     let categoryID = $.urlParam('id'); 
     if(categoryID !== null) {
         showArticleInCategory(categoryID);
         
     }
-
     // 3 tin tức mới nhất
-    showLatestArticle(3); 
+    showLatestArticle(4); 
 
     // Đổ danh sách category và bài viết của category ngoài trang chủ
     showCategoryDetail();
 
     // // Hiển thị bài viết đã xem
-    // let data = listItems();
-    // showArticleViewed(data);
+    let data = listItems();
+    showArticleViewed(data);
 });
 
