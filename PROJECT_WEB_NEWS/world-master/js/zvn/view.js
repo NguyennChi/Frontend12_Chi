@@ -59,25 +59,31 @@ showArticleInCategory = (categoryID) => {
         $.getJSON(API_PREFIX + `categories_news/${categoryID}/articles?offset=0&limit=10&sort_by=id&sort_dir=desc`, function(data) {
             let xhtml = '';
             $.each( data, function( key, val ) {
-                    xhtml +=`<div class="single-blog-post post-style-4 d-flex align-items-center">
-                                <!-- Post Thumbnail -->
-                                <div class="post-thumbnail">
-                                    <img src="${val.thumb}" alt="${val.thumb}">
-                                </div>
-                                <!-- Post Content -->
-                                <div class="post-content">
-                                    <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="headline">
-                                        <h5>${val.title}</h5>
-                                    </a>
-                                    <p>${val.description}</p>
-                                    <!-- Post Meta -->
-                                    <div class="post-meta">
-                                        <p><a href="#" class="post-author">kathy</a> on <a href="#" class="post-date">${val.publish_date}</a></p>
+                
+                    xhtml += `<div class="col-12 col-md-6">
+                                    <!-- Single Blog Post -->
+                                    <div class="single-blog-post wow fadeInUpBig" data-wow-delay="0.2s">
+                                        <!-- Post Thumbnail -->
+                                        <div class="post-thumbnail">
+                                            <img src="${val.thumb}" alt="${val.link}">
+                                            <!-- Catagory -->
+                                            <div class="post-cta"><a href="${val.link}">${val.category.name}</a></div>
+                                        </div>
+                                        <!-- Post Content -->
+                                        <div class="post-content">
+                                            <a href="${val.link}" class="headline">
+                                                <h5>${val.title}</h5>
+                                            </a>
+                                            <p>${val.description}</p>
+                                            <!-- Post Meta -->
+                                            <div class="post-meta">
+                                                <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">${val.updated_at}</a></p>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>` 
+                                </div>`
             });
-            elmAreaListArticle.after(xhtml);
+            elmAreaListArticle.html(xhtml);
         });
     }
 }
@@ -88,12 +94,14 @@ showLatestArticle = (total) => {
     // Đổ dữ liệu ra category news
     $.getJSON( API_PREFIX + `articles?offset=0&limit=${total}&sort_by=id&sort_dir=desc`, function( data ) {
         $.each( data, function( key, val ) { 
+            console.log(val.thumb);
             xhtml += `<div class="col-12 col-md-6">
                         <!-- Single Blog Post -->
                         <div class="single-blog-post wow fadeInUpBig" data-wow-delay="0.2s">
                             <!-- Post Thumbnail -->
+                            <img src="${val.thumb}" alt="${val.title}">
                             <div class="post-thumbnail">
-                                <img src="${val.thumb}" alt="${val.title}">
+                              
                                 <!-- Catagory -->
                                 <div class="post-cta"><a href="catagory.html?id=${val.category.id}">${val.category.name}</a></div>
                             </div>
@@ -111,7 +119,7 @@ showLatestArticle = (total) => {
                         </div>
                     </div>`   
         });
-        elmAreaLatestArticle.html(xhtml);
+        elmAreaLatestArticle.after(xhtml);
     });
 
 }
@@ -158,22 +166,23 @@ showArticleViewed = (data) => {
         console.log(key);
         console.log(val.category);
         xhtml+=` <!-- Post Thumbnail -->
-                    <div class="post-thumbnail">
-                        <img src="${val.thumb}" alt="${val.title}">
-                        <!-- Catagory -->
-                        <div class="post-cta"><a href="#">travel</a></div>
-                    </div>
-                    <!-- Post Content -->
-                    <div class="post-content">
-                        <a href="${val.link}" class="headline">
-                            <h5>${val.title}</h5>
-                        </a>
-                        <!-- Post Meta -->
-                        <div class="post-meta">
-                            <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                            <a href="javascript:void(0)" onClick="funcDeleteArticleViewed('${val.id}')" class="post-cata cata-sm cata-success">Xoá</a>
-                        </div>
-                    </div>`
+        <div class="post-thumbnail">
+            <img src="${val.thumb}" alt="${val.title}">
+            <!-- Catagory -->
+            <div class="post-cta"><a href="#">travel</a></div>
+        </div>
+        <!-- Post Content -->
+        <div class="post-content">
+            <a href="${val.link}" class="headline">
+                <h5>${val.title}</h5>
+            </a>
+            <!-- Post Meta -->
+            <div class="post-meta">
+                <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                <a href="javascript:void(0)" onClick="funcDeleteArticleViewed('${val.id}')" class="post-cata cata-sm cata-success">Xoá</a>
+            </div>
+        </div>` 
+
 
         // xhtml += `<!-- Single Blog Post -->
         // <div class="single-blog-post d-flex">

@@ -30,7 +30,11 @@ body {
 .ubuntu-fonts {
   font-family: "Ubuntu", sans-serif; }
 
-h1,
+h1{
+  color: white;
+  font-size: 25px;
+}
+
 h2,
 h3,
 h4,
@@ -53,7 +57,8 @@ a {
   font-size: 14px;
   font-weight: 400;
   font-family: "Ubuntu", sans-serif;
-  color: #8d8d8d; }
+  color: #8d8d8d;
+  padding-left: 15px; }
   a:hover, a:focus {
     font-family: "Ubuntu", sans-serif;
     -webkit-transition-duration: 500ms;
@@ -258,7 +263,7 @@ img {
       right: 30px; } }
 
 .section-padding-100 {
-  padding: 100px 0; }
+  padding:0; }
 
 .section-padding-50 {
   padding: 50px 0; }
