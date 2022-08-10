@@ -47,7 +47,9 @@ h6 {
 p {
   color: #8d8d8d;
   font-size: 14px;
-  line-height: 1.4; }
+  line-height: 1.4;
+  margin-bottom: 0px;
+ }
 
 a {
   -webkit-transition-duration: 500ms;
@@ -736,7 +738,8 @@ img {
 .sidebar-widget-area {
   position: relative;
   z-index: 1;
-  border-bottom: 2px solid #f1f1f1; }
+  border-bottom: 2px solid #f1f1f1;
+  padding: 20px; }
   .sidebar-widget-area .title {
     display: block;
     font-size: 18px;
@@ -747,9 +750,11 @@ img {
     font-weight: 700;
     padding: 12px 0;
     border-bottom: 2px solid #f1f1f1;
-    padding-left: 30px; }
+    padding-left: 15px;
+    background-color: #e5cd9d;
+   }
   .sidebar-widget-area .widget-content {
-    padding: 0}
+    padding: 10px}
     @media only screen and (max-width: 767px) {
       .sidebar-widget-area .widget-content {
         padding: 30px 0 30px 15px; } }
@@ -1216,7 +1221,35 @@ textarea:focus ~ .highlight {
   100% {
     -webkit-transform: rotate(-45deg) scaleX(0) translateY(-10px);
     transform: rotate(-45deg) scaleX(0) translateY(-10px); } }
-/* Footer Area CSS */
+div.area-gold-item p, div.area-coin-item p {
+  margin-bottom: 5px;
+    color: #000000;
+    font-size: 16px;
+    font-weight: bold;
+   
+}
+
+div.area-gold-item span.sell {
+  color: #1ba406;
+}
+
+div.area-gold-item span.buy {
+  color:  #db4437;
+}
+
+div.area-coin-item span.price {
+  color: #1ba406;
+}
+
+div.area-coin-item span.red {
+  color: #db4437;
+}
+
+div.area-coin-item span.green {
+  color: #3cb878;
+}
+
+    /* Footer Area CSS */
 .footer-area {
   background-color: #161616;
   padding: 70px 0;
@@ -1234,7 +1267,7 @@ textarea:focus ~ .highlight {
       min-width: 33.3333%; }
       .footer-area .footer-single-widget .footer-menu li a {
         padding: 7.5px 5px;
-        display: block; }
+        display: flex; }
     @media only screen and (max-width: 767px) {
       .footer-area .footer-single-widget .footer-menu {
         margin: 50px 0; } }
@@ -1273,4 +1306,11 @@ textarea:focus ~ .highlight {
         font-size: 14px;
         color: #959595; }
 
+  
+.footer-center-center{
+  display: flex;
+}
+.footer-center-center li a{
+  display: inline-block;
+}
 /*# sourceMappingURL=style.css.map */

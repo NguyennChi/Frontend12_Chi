@@ -18,7 +18,7 @@ $( document ).ready(function() {
         
     }
     // 3 tin tức mới nhất
-    showLatestArticle(4); 
+    showLatestArticle(3); 
 
     // Đổ danh sách category và bài viết của category ngoài trang chủ
     showCategoryDetail();
@@ -26,5 +26,8 @@ $( document ).ready(function() {
     // // Hiển thị bài viết đã xem
     let data = listItems();
     showArticleViewed(data);
+
+    // hiển thị category footer
+    showCategoryFooter();
 });
 
