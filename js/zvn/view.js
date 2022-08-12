@@ -67,53 +67,64 @@ showCoin = () => {
 // đổ bài viết trong category
 showArticleInCategory = (categoryID) => {
     // let categoryID = $.urlParam('id'); 
-    
+    let xhtml = '';
     if(categoryID !== null) {
         // Đổ dữ liệu ra category news
         $.getJSON(API_PREFIX + `categories_news/${categoryID}/articles?offset=0&limit=10&sort_by=id&sort_dir=desc`, function(data) {
-            let xhtml = '';
-            
             $.each( data, function( key, val ) {  
-                console.log(val);            
-                    xhtml += `<div class="col-12 col-md-6">
-                                    <!-- Single Blog Post -->
-                                    <div class="single-blog-post wow fadeInUpBig" data-wow-delay="0.2s">
-                                        <!-- Post Thumbnail -->
-                                        <div class="post-thumbnail">
-                                            <img src="${val.thumb}" alt="${val.link}">
-                                        </div>
-                                        <!-- Post Content -->
-                                        <div class="post-content">
-                                            <a href="${val.link}" class="headline">
-                                                <h5>${val.title}</h5>
-                                            </a>
-                                            <p>${val.description}</p>
-                                            <!-- Post Meta -->
-                                            <div class="post-meta">
-                                                <p> <a href="#" class="post-date">${val.publish_date}</a></p>
+                    xhtml += `         <div class="col-12 col-md-6 ">
+                                            <!-- Single Blog Post -->
+                                            <div class="single-blog-post wow fadeInUpBig fixContentHeight" data-wow-delay="0.2s">
+                                                <!-- Post Thumbnail -->
+                                                <div class="post-thumbnail">
+                                                    <img class="fixImgHeight" src="${val.thumb}" alt="${val.link}">
+                                                </div>
+                                                <!-- Post Content -->
+                                                <div class="post-content">
+                                                    <a href="${val.link}" class="headline">
+                                                        <h5>${val.title}</h5>
+                                                    </a>
+                                                    <p>${val.description}</p>
+                                                    <!-- Post Meta -->
+                                                    <div class="post-meta">
+                                                        <p> <a href="#" class="post-date">${val.publish_date}</a></p>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>`
+                                        </div>`
+                                    
             });
             elmAreaListArticle.html(xhtml);
         });
     }
 
 }
+    // đổ tiêu đề category
 
+    showTitleArticleInCategory = (categoryID) => {
+    // let categoryID = $.urlParam('id'); 
+    
+    if(categoryID !== null) {
+        // Đổ dữ liệu ra category news
+        $.getJSON(API_PREFIX + `categories_news/${categoryID}/articles?offset=0&limit=10&sort_by=id&sort_dir=desc`, function(data) {
+            let xhtml = '';
+            xhtml += `<li class="title">${(data[0].category.name).toUpperCase()}</li>`
+            elmAreaTitleListArticle.html(xhtml);
+        });
+    }
+
+    }
 // Đổ danh sách bài viết mới nhất
 showLatestArticle = (total) => {
     let xhtml = '';
     // Đổ dữ liệu ra category news
     $.getJSON( API_PREFIX + `articles?offset=0&limit=${total}&sort_by=id&sort_dir=desc`, function( data ) {
-        console.log(data);
         $.each( data, function( key, val ) { 
                 xhtml += `<div class="col-12 col-md-6 col-lg-4">
                                 <div class="single-blog-post post-style-3 mt-50 wow fadeInUpBig" data-wow-delay="0.2s">
                                     <!-- Post Thumbnail -->
                                     <div class="post-thumbnail">
-                                        <img src="${val.thumb}" alt="${val.link}">
+                                        <img class ="fixImgHeight" src="${val.thumb}" alt="${val.link}">
                                         <!-- Post Content -->
                                         <div class="post-content d-flex align-items-center justify-content-between">
                                             <!-- Catagory -->
@@ -134,28 +145,46 @@ showLatestArticle = (total) => {
         elmAreaLatestArticle.html(xhtml);
     });
 }
-// Thiết lập chiều cao box
-
-
-    let elemBox = document.getElementById('box')
-    let maxHeight  = 0;
-    for (let i = 0; i < elemBox.length; i++) {
-       let currentHeight = elemBox[i].offsetHeight;
-       maxHeight = (currentHeight > maxHeight) ? currentHeight : maxHeight;
-    }
-
-    for (let i = 0; i < elemBox.length; i++) {
-        elemBox[i].style.height = maxHeight + "px"
-        
-    }
-    
+  
+// Đổ video ra trang chủ
+showVideo = () => {
+    let xhtml = '';
+    // Đổ dữ liệu ra category news
+    $.getJSON( API_PREFIX + `playlists?offset=0&limit=1&sortBy=id&sort_dir=asc&type=course`, function( data ) {
+        $.each( data, function( key, val ) {
+            console.log(val.title); 
+                xhtml += `<div class="single-blog-post wow fadeInUpBig" data-wow-delay="0.4s">
+                                <!-- Post Thumbnail -->
+                                <div class="post-thumbnail">
+                                    <img src="img/blog-img/b8.jpg" alt="">
+                                    <!-- Catagory -->
+                                    <div class="post-cta"><a href="#">travel</a></div>
+                                    <!-- Video Button -->
+                                    <a href="https://www.youtube.com/watch?v=IhnqEwFSJRg" class="video-btn"><i class="fa fa-play"></i></a>
+                                </div>
+                                <!-- Post Content -->
+                                <div class="post-content">
+                                    <a href="#" class="headline">
+                                        <h5>${val.title}</h5>
+                                    </a>
+                                    <p>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in...</p>
+                                    <!-- Post Meta -->
+                                    <div class="post-meta">
+                                        <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
+                                    </div>
+                                </div>
+                            </div>`
+        });
+        elmAreaVideo.html(xhtml);
+    });
+}
 // Đổ danh sách category và bài viết của category ngoài trang chủ
 showCategoryDetail = () => {
     $.each( arrCategoryInHome, function( key, value ) {
         let xhtml = '';
         $.getJSON( API_PREFIX + `categories_news/${value}/articles?offset=0&limit=4&sort_by=id&sort_dir=desc`, function( data ) { 
             xhtml = `<div class="title">
-                        <h5>${data[0].category.name}</h5>
+                        <h5>${(data[0].category.name).toUpperCase()}</h5>
                     </div>`
             $.each( data, function( key, val ) {
                 xhtml += `<div class="single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.2s">
@@ -190,16 +219,16 @@ showArticleViewed = (data) => {
     let xhtml = '';
     $.each( data, function( key, val ) {
         console.log(val);
-        xhtml = `<div class="single-blog-post wow fadeInUpBig" data-wow-delay="0.2s">
+        xhtml = `<div class="single-blog-post wow fadeInUpBig fixHeightOldPage" data-wow-delay="0.2s">
                     <!-- Post Thumbnail -->
                     <div class="post-thumbnail">
                         <img src="${val.thumb}" alt="${val.link}">
                     </div>
                     <!-- Post Content -->
-                    <div class="post-content">
+                    <div class="fixContentHeight post-content ">
                         <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2"><h5>${val.title}</h5></a>
                         <!-- Post Meta -->
-                        <div class="post-meta">
+                        <div class="post-meta ">
                             <a href="javascript:void(0)" onClick="funcDeleteArticleViewed('${val.id}')" class="post-cata cata-sm cata-success">Xoá</a>
                         </div>
                     </div>

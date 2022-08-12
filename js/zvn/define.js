@@ -1,5 +1,7 @@
 let elmAreaCategoryNews = $("ul#zvn-area-category-news");
 let elmAreaListArticle  = $("div#zvn-area-list-article");
+let elmAreaTitleListArticle  = $("ul#zvn-area-title-list-article");
+let elmAreaVideo        = $("div#zvn-area-video");
 let elmAreaArticleTitle = $("div#myTitle");
 let elmAreaGold         = $("div#zvn-area-gold");
 let elmAreaCoin         = $("div#zvn-area-coin");

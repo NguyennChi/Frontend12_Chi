@@ -17,6 +17,10 @@ $( document ).ready(function() {
         showArticleInCategory(categoryID);
         
     }
+        // đổ tiêu đề category
+        showTitleArticleInCategory(categoryID)
+    // đổ video
+    showVideo();
     // 3 tin tức mới nhất
     showLatestArticle(3); 
 

@@ -542,9 +542,19 @@ img {
         line-height: 36px; }
       .single-blog-post .post-thumbnail .video-btn:hover i, .single-blog-post .post-thumbnail .video-btn:focus i {
         color: #0000ff; }
+  
+ .fixContentHeight{
+          height: 450px;
+          margin-bottom: 20px;
+        }
+.fixHeightOldPage{
+          height: 350px;
+          margin-bottom: 20px;
+        }
   .single-blog-post .post-content {
     padding: 5px 15px;
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+     }
     .single-blog-post .post-content .headline h5 {
       font-size: 18px;
       margin-bottom: 10px; }
@@ -1307,11 +1317,19 @@ div.area-coin-item span.green {
         font-size: 14px;
         color: #959595; }
 
-  
+  /* Bổ sung style */
 .footer-center-center{
   display: flex;
 }
 .footer-center-center li a{
   display: inline-block;
 }
+.fixImgHeight{
+  height: 210px;
+}
+.nav-tabs-magin{
+  margin: 20px 5px 0 0;
+  font-weight: bold;
+}
+
 /*# sourceMappingURL=style.css.map */
