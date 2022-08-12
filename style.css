@@ -543,7 +543,8 @@ img {
       .single-blog-post .post-thumbnail .video-btn:hover i, .single-blog-post .post-thumbnail .video-btn:focus i {
         color: #0000ff; }
   .single-blog-post .post-content {
-    padding: 20px 30px; }
+    padding: 5px 15px;
+    margin-bottom: 20px; }
     .single-blog-post .post-content .headline h5 {
       font-size: 18px;
       margin-bottom: 10px; }

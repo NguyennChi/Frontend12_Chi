@@ -42,24 +42,27 @@ showCoin = () => {
     });
 }  
 // thời tiết
-showWeather = () => {
-    $.getJSON( "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Ho%20Chi%20Minh%20City?unitGroup=metric&key=GVPYC2VZ6GS4ZN44FWRCPD53V&contentType=json", function( data ) {
-        let xhtml = '';
-        console.log(data);
-        $.each( data, function(val ) {
-            console.log(val);
-        xhtml += `<div class="widget-content">
-                    <table>
-                        <th>
-                            <td>${val}</td>
-                            <td>:</td>
-                        </th>
-                    </table>
-                </div>`;
-        }); 
-        elmAreaWeather.after(xhtml);
-    });
-}
+// showWeather = () => {
+//     $.getJSON( "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Ho%20Chi%20Minh%20City?unitGroup=metric&key=GVPYC2VZ6GS4ZN44FWRCPD53V&contentType=json", function( data ) {
+//         let xhtml = '';
+//         console.log(data);
+//         $.each( data.days, function( key,val ) {
+//             console.log(val);
+           
+
+//         // xhtml += `<div class="widget-content">
+//         //             <table>
+//         //                 <th>
+//         //                     <td>${val.datetime}</td>
+//         //                     <td>:</td>
+//         //                     <td>bcgvbb</td>
+//         //                 </th>
+//         //             </table>
+//         //         </div>`;
+//         }); 
+//         elmAreaWeather.after(xhtml)
+//     });
+// }
 
 // đổ bài viết trong category
 showArticleInCategory = (categoryID) => {
@@ -70,15 +73,14 @@ showArticleInCategory = (categoryID) => {
         $.getJSON(API_PREFIX + `categories_news/${categoryID}/articles?offset=0&limit=10&sort_by=id&sort_dir=desc`, function(data) {
             let xhtml = '';
             
-            $.each( data, function( key, val ) {              
+            $.each( data, function( key, val ) {  
+                console.log(val);            
                     xhtml += `<div class="col-12 col-md-6">
                                     <!-- Single Blog Post -->
                                     <div class="single-blog-post wow fadeInUpBig" data-wow-delay="0.2s">
                                         <!-- Post Thumbnail -->
                                         <div class="post-thumbnail">
                                             <img src="${val.thumb}" alt="${val.link}">
-                                            <!-- Catagory -->
-                                            <div class="post-cta"><a href="${val.link}">${val.category.name}</a></div>
                                         </div>
                                         <!-- Post Content -->
                                         <div class="post-content">
@@ -88,7 +90,7 @@ showArticleInCategory = (categoryID) => {
                                             <p>${val.description}</p>
                                             <!-- Post Meta -->
                                             <div class="post-meta">
-                                                <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">${val.updated_at}</a></p>
+                                                <p> <a href="#" class="post-date">${val.publish_date}</a></p>
                                             </div>
                                         </div>
                                     </div>
@@ -105,6 +107,7 @@ showLatestArticle = (total) => {
     let xhtml = '';
     // Đổ dữ liệu ra category news
     $.getJSON( API_PREFIX + `articles?offset=0&limit=${total}&sort_by=id&sort_dir=desc`, function( data ) {
+        console.log(data);
         $.each( data, function( key, val ) { 
                 xhtml += `<div class="col-12 col-md-6 col-lg-4">
                                 <div class="single-blog-post post-style-3 mt-50 wow fadeInUpBig" data-wow-delay="0.2s">
@@ -133,10 +136,19 @@ showLatestArticle = (total) => {
 }
 // Thiết lập chiều cao box
 
-boxFixHeight = () => {
-    
-}
 
+    let elemBox = document.getElementById('box')
+    let maxHeight  = 0;
+    for (let i = 0; i < elemBox.length; i++) {
+       let currentHeight = elemBox[i].offsetHeight;
+       maxHeight = (currentHeight > maxHeight) ? currentHeight : maxHeight;
+    }
+
+    for (let i = 0; i < elemBox.length; i++) {
+        elemBox[i].style.height = maxHeight + "px"
+        
+    }
+    
 // Đổ danh sách category và bài viết của category ngoài trang chủ
 showCategoryDetail = () => {
     $.each( arrCategoryInHome, function( key, value ) {
@@ -159,7 +171,7 @@ showCategoryDetail = () => {
                                     <p>${val.description}</p>
                                     <!-- Post Meta -->
                                     <div class="post-meta">
-                                        <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">${val.publish_date}</a></p>
+                                        <p><a href="#" class="post-date">${val.publish_date}</a></p>
                                     </div>
                                 </div>
                             </div>`
@@ -177,23 +189,21 @@ showArticleViewed = (data) => {
     // elmAreaArticleViewed.nextAll('div').remove();
     let xhtml = '';
     $.each( data, function( key, val ) {
-        xhtml+=` <!-- Post Thumbnail -->
-        <div class="post-thumbnail">
-            <img src="${val.thumb}" alt="${val.title}">
-            <!-- Catagory -->
-            <div class="post-cta"><a href="#">travel</a></div>
-        </div>
-        <!-- Post Content -->
-        <div class="post-content">
-                <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2">${val.title}</a> 
-                <h5>${val.title}</h5>
-            </a>
-            <!-- Post Meta -->
-            <div class="post-meta">
-                <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                <a href="javascript:void(0)" onClick="funcDeleteArticleViewed('${val.id}')" class="post-cata cata-sm cata-success">Xoá</a>
-            </div>
-        </div>`  
+        console.log(val);
+        xhtml = `<div class="single-blog-post wow fadeInUpBig" data-wow-delay="0.2s">
+                    <!-- Post Thumbnail -->
+                    <div class="post-thumbnail">
+                        <img src="${val.thumb}" alt="${val.link}">
+                    </div>
+                    <!-- Post Content -->
+                    <div class="post-content">
+                        <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2"><h5>${val.title}</h5></a>
+                        <!-- Post Meta -->
+                        <div class="post-meta">
+                            <a href="javascript:void(0)" onClick="funcDeleteArticleViewed('${val.id}')" class="post-cata cata-sm cata-success">Xoá</a>
+                        </div>
+                    </div>
+                </div>`  
     });
     elmAreaArticleViewed.after(xhtml);
 

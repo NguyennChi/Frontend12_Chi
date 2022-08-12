@@ -9,7 +9,7 @@ $( document ).ready(function() {
     showCoin();
 
     // Thời tiết
-        showWeather();
+    // showWeather();
     
     // Đổ danh sách bài viết trong một category nào đó
     let categoryID = $.urlParam('id'); 
