@@ -34,7 +34,5 @@ $(document).ready(function () {
     // hiển thị category footer
     showCategoryFooter();
 
-    // đổi ngày
-    changeDate();
 });
 

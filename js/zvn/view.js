@@ -72,6 +72,8 @@ showArticleInCategory = (categoryID) => {
         // Đổ dữ liệu ra category news
         $.getJSON(API_PREFIX + `categories_news/${categoryID}/articles?offset=0&limit=10&sort_by=id&sort_dir=desc`, function(data) {
             $.each( data, function( key, val ) {  
+                var dateFormat = val.publish_date
+                let changedate = moment(dateFormat).format('DD-MM-YYYY');
                     xhtml += `         <div class="col-12 col-md-6 ">
                                             <!-- Single Blog Post -->
                                             <div class="single-blog-post wow fadeInUpBig fixContentHeight" data-wow-delay="0.2s">
@@ -87,7 +89,7 @@ showArticleInCategory = (categoryID) => {
                                                     <p>${val.description}</p>
                                                     <!-- Post Meta -->
                                                     <div class="post-meta">
-                                                        <p> <a href="#" class="post-date">${val.publish_date}</a></p>
+                                                        <p> <a href="#" class="post-date">${changedate}</a></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -120,7 +122,8 @@ showLatestArticle = (total) => {
     // Đổ dữ liệu ra category news
     $.getJSON( API_PREFIX + `articles?offset=0&limit=${total}&sort_by=id&sort_dir=desc`, function( data ) {
         $.each( data, function( key, val ) { 
-            // console.log(val.publish_date);
+            var dateFormat = val.publish_date
+            let changedate = moment(dateFormat).format('DD-MM-YYYY');
                 xhtml += `<div class="col-12 col-md-6 col-lg-4">
                                 <div class="single-blog-post post-style-3 mt-50 wow fadeInUpBig" data-wow-delay="0.2s">
                                     <!-- Post Thumbnail -->
@@ -136,7 +139,7 @@ showLatestArticle = (total) => {
                                             </a>
                                             <!-- Post Meta -->
                                             <div class="post-meta">
-                                                <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">${val.publish_date}</a></p>
+                                                <p><a href="#" class="post-date">${changedate}</a></p>
                                             </div>
                                         </div>
                                     </div>
@@ -147,12 +150,7 @@ showLatestArticle = (total) => {
     });
 } 
 // đổi ngày
-changeDate = () =>{
-    var dateFormat = '2022-07-07 09:30:24';
-    var now = new Date();
-    dateFormat("dddd, mmmm dS, yyyy, h:MM:ss TT");
-    console.log(dateFormat);
-}
+   
 // Đổ video ra trang chủ
 showVideo = () => {
     let xhtml = '';
@@ -194,6 +192,8 @@ showCategoryDetail = () => {
                         <h5>${(data[0].category.name).toUpperCase()}</h5>
                     </div>`
             $.each( data, function( key, val ) {
+                var dateFormat = val.publish_date
+                let changedate = moment(dateFormat).format('DD-MM-YYYY');
                 xhtml += `<div class="single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.2s">
                                 <!-- Post Thumbnail -->
                                 <div class="post-thumbnail">
@@ -207,7 +207,7 @@ showCategoryDetail = () => {
                                     <p>${val.description}</p>
                                     <!-- Post Meta -->
                                     <div class="post-meta">
-                                        <p><a href="#" class="post-date">${val.publish_date}</a></p>
+                                        <p><a href="#" class="post-date">${changedate}</a></p>
                                     </div>
                                 </div>
                             </div>`
