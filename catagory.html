@@ -42,11 +42,11 @@
                     <!-- Navbar -->
                     <div class="collapse navbar-collapse" id="worldNav">
                         <ul class="navbar-nav ml-auto">
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link" href="index.html">TRANG CHỦ <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">TIN TỨC</a>
+                                <a class="nav-link dropdown-toggle" href="catagory.html" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">TIN TỨC</a>
                                 <ul class="dropdown-menu" id="zvn-area-category-news">
                                     <!-- category -->
                                 </ul>
@@ -182,26 +182,9 @@
                     
                     var css_file=document.createElement("link"); 
                     css_file.setAttribute("rel","stylesheet");
-                    css_file.setAttribute("type","text/css"); 
                     css_file.setAttribute("href",'https://s.bookcdn.com/css/w/booked-wzs-widget-160x275.css?v=0.0.1'); 
                     document.getElementsByTagName("head")[0].appendChild(css_file); 
                     
-                    
-                    function setWidgetData_21390(data) { 
-                        console.log(data);
-                        if(typeof(data) != 'undefined' && data.results.length > 0) { 
-                            for(var i = 0; i < data.results.length; ++i){ 
-                                var objMainBlock = document.getElementById('m-booked-bl-simple-week-vertical-21390'); 
-                        if(objMainBlock !== null) { 
-                            var copyBlock = document.getElementById('m-bookew-weather-copy-'+data.results[i].widget_type); 
-                        objMainBlock.innerHTML = data.results[i].html_code; if(copyBlock !== null) objMainBlock.appendChild(copyBlock); } 
-                    } } else { alert('data=undefined||data.results is empty'); 
-                    } } 
-                        var widgetSrc = "https://widgets.booked.net/weather/info?action=get_weather_info;ver=7;cityID=19487;type=4;scode=124;ltid=3457;domid=w209;anc_id=15720;countday=undefined;cmetric=1;wlangID=1;color=137AE9;wwidth=160;header_color=ffffff;text_color=333333;link_color=08488D;border_form=1;footer_color=ffffff;footer_text_color=333333;transparent=0;v=0.0.1";
-                        var weatherBookedScript = document.createElement("script"); 
-                        weatherBookedScript.setAttribute("type", "text/javascript"); 
-                        weatherBookedScript.src = widgetSrc; 
-                        document.body.appendChild(weatherBookedScript) 
                     </script>
 
                             <!-- <div id="zvn-area-weather"></div> -->

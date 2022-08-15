@@ -1,7 +1,8 @@
-$( document ).ready(function() {
+$(document).ready(function () {
     // Đổ dữ liệu ra category news
     showCategoryInMenu();
-    
+    // active menu
+    activeMenu2();
     // Giá vàng
     showGold();
 
@@ -10,19 +11,18 @@ $( document ).ready(function() {
 
     // Thời tiết
     // showWeather();
-    
+
     // Đổ danh sách bài viết trong một category nào đó
-    let categoryID = $.urlParam('id'); 
-    if(categoryID !== null) {
+    let categoryID = $.urlParam('id');
+    if (categoryID !== null) {
         showArticleInCategory(categoryID);
-        
-    }
         // đổ tiêu đề category
-        showTitleArticleInCategory(categoryID)
+        showTitleArticleInCategory(categoryID);
+    }  
     // đổ video
     showVideo();
     // 3 tin tức mới nhất
-    showLatestArticle(3); 
+    showLatestArticle(3);
 
     // Đổ danh sách category và bài viết của category ngoài trang chủ
     showCategoryDetail();
@@ -33,5 +33,8 @@ $( document ).ready(function() {
 
     // hiển thị category footer
     showCategoryFooter();
+
+    // đổi ngày
+    changeDate();
 });
 

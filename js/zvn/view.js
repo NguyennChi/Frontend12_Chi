@@ -120,6 +120,7 @@ showLatestArticle = (total) => {
     // Đổ dữ liệu ra category news
     $.getJSON( API_PREFIX + `articles?offset=0&limit=${total}&sort_by=id&sort_dir=desc`, function( data ) {
         $.each( data, function( key, val ) { 
+            // console.log(val.publish_date);
                 xhtml += `<div class="col-12 col-md-6 col-lg-4">
                                 <div class="single-blog-post post-style-3 mt-50 wow fadeInUpBig" data-wow-delay="0.2s">
                                     <!-- Post Thumbnail -->
@@ -144,8 +145,14 @@ showLatestArticle = (total) => {
         });
         elmAreaLatestArticle.html(xhtml);
     });
+} 
+// đổi ngày
+changeDate = () =>{
+    var dateFormat = '2022-07-07 09:30:24';
+    var now = new Date();
+    dateFormat("dddd, mmmm dS, yyyy, h:MM:ss TT");
+    console.log(dateFormat);
 }
-  
 // Đổ video ra trang chủ
 showVideo = () => {
     let xhtml = '';
@@ -248,4 +255,21 @@ showCategoryFooter = () => {
         });
         elmAreaListFooter.html(xhtml)
     });
+}
+// active menu
+function activeMenu2(){
+    var current = location.pathname.split('/').pop();
+    console.log(current);
+    if(current!= '' || current==undefined){
+        $('.navbar-nav li.nav-item a').each(function(){
+            var $this = $(this);
+            // console.log($this.attr('href'));
+            // if the current path is like this link, make it active
+            $this.parent().removeClass('active');
+            if($this.attr('href').indexOf(current) !== -1){
+                $this.parent().addClass('active');
+            }
+        })
+    }
+    
 }
