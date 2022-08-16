@@ -87,9 +87,8 @@ showArticleInCategory = (categoryID) => {
                                                         <h5>${val.title}</h5>
                                                     </a>
                                                     <p>${val.description}</p>
-                                                    <!-- Post Meta -->
-                                                    <div class="post-meta">
-                                                        <p> <a href="#" class="post-date">${changedate}</a></p>
+                                                    <p class="padate"> <a href="#" class="post-date">${changedate}</a></p>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
