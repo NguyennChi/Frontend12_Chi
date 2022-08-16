@@ -83,9 +83,7 @@ showArticleInCategory = (categoryID) => {
                                                 </div>
                                                 <!-- Post Content -->
                                                 <div class="post-content">
-                                                    <a href="${val.link}" class="headline">
-                                                        <h5>${val.title}</h5>
-                                                    </a>
+                                                <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2"><h5>${val.title}</h5></a>
                                                     <p>${val.description}</p>
                                                     <p class="padate"> <a href="#" class="post-date">${changedate}</a></p>
                                                         
@@ -133,9 +131,7 @@ showLatestArticle = (total) => {
                                             <!-- Catagory -->
                                             <div class="post-tag"><a href="catagory.html?id=${val.category.id}">${val.category.name}</a></div>
                                             <!-- Headline -->
-                                            <a href="${val.link}" class="headline">
-                                                <h5>${val.title}</h5>
-                                            </a>
+                                            <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2"><h5>${val.title}</h5></a>
                                             <!-- Post Meta -->
                                             <div class="post-meta">
                                                 <p><a href="#" class="post-date">${changedate}</a></p>
@@ -200,9 +196,7 @@ showCategoryDetail = () => {
                                 </div>
                                 <!-- Post Content -->
                                 <div class="post-content">
-                                    <a  href="${val.link} target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="headline">
-                                        <h5>${val.title}</h5>
-                                    </a>
+                                     <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2"><h5>${val.title}</h5></a>
                                     <p>${val.description}</p>
                                     <!-- Post Meta -->
                                     <div class="post-meta">
