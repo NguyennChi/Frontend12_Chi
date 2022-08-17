@@ -229,7 +229,9 @@ showArticleViewed = (data) => {
                         <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2"><h5>${val.title}</h5></a>
                         <!-- Post Meta -->
                         <div class="post-meta ">
-                            <a href="javascript:void(0)" onClick="funcDeleteArticleViewed('${val.id}')" class="post-cata cata-sm cata-success">Xoá</a>
+                            <a href="javascript:void(0)" onClick="funcDeleteArticleViewed('${val.id}')" class="post-cata cata-sm cata-success">
+                            <button class="buttonShowDel">XÓA</button>
+                            </a>
                         </div>
                     </div>
                 </div>`  

@@ -1335,5 +1335,18 @@ div.area-coin-item span.green {
   margin: 20px 5px 0 0;
   font-weight: bold;
 }
+.buttonShowDel{
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 5px 15px;
+  text-align: center;
+  text-decoration: none;
+  margin: 12px;
+  font-size: 12px;
+  cursor: pointer;
+  
+}
 
 /*# sourceMappingURL=style.css.map */
