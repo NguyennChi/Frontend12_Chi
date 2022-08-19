@@ -34,5 +34,8 @@ $(document).ready(function () {
     // hiển thị category footer
     showCategoryFooter();
 
+    // // Hiển thị bài viết yêu thích
+    let dataLove = listItemsLove();
+    showArticleViewedLove(dataLove);
 });
 

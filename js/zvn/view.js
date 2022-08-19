@@ -85,8 +85,11 @@ showArticleInCategory = (categoryID) => {
                                                 <div class="post-content">
                                                 <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2"><h5>${val.title}</h5></a>
                                                     <p>${val.description}</p>
-                                                    <p class="padate"> <a href="#" class="post-date">${changedate}</a></p>
-                                                        
+                                                    <p class="post-date">
+                                                    <a><i class="pad fal fa-clock"></i></a>
+                                                    ${changedate}</a>
+                                                    <a onClick="funcViewArticleLove('${val.id}', '${val.title}', '${val.thumb}', '${val.link}', '${val.description}','${val.publish_date}')"><i class=" far fa-heart"></i></a></p>
+                                                    
                                                     </div>
                                                 </div>
                                             </div>
@@ -131,10 +134,12 @@ showLatestArticle = (total) => {
                                             <!-- Catagory -->
                                             <div class="post-tag"><a href="catagory.html?id=${val.category.id}">${val.category.name}</a></div>
                                             <!-- Headline -->
-                                            <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2"><h5>${val.title}</h5></a>
+                                            <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="headline"><h5>${val.title}</h5></a>
                                             <!-- Post Meta -->
                                             <div class="post-meta">
-                                                <p><a href="#" class="post-date">${changedate}</a></p>
+                                                <p>
+                                                <a class="post-date"><i class="fal fa-clock"></i>  ${changedate}</a>
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -189,21 +194,22 @@ showCategoryDetail = () => {
             $.each( data, function( key, val ) {
                 var dateFormat = val.publish_date
                 let changedate = moment(dateFormat).format('DD-MM-YYYY');
-                xhtml += `<div class="single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.2s">
-                                <!-- Post Thumbnail -->
-                                <div class="post-thumbnail">
-                                    <img src="${val.thumb}" alt="${val.link}">
-                                </div>
-                                <!-- Post Content -->
-                                <div class="post-content">
-                                     <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2"><h5>${val.title}</h5></a>
-                                    <p>${val.description}</p>
-                                    <!-- Post Meta -->
-                                    <div class="post-meta">
-                                        <p><a href="#" class="post-date">${changedate}</a></p>
+                    xhtml += `  <div class=" single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.2s">
+                                    <!-- Post Thumbnail -->
+                                    <div class="post-thumbnail">
+                                        <img src="${val.thumb}" alt="${val.link}">
                                     </div>
-                                </div>
-                            </div>`
+                                    <!-- Post Content -->
+                                    <div class="post-content">
+                                        <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2"><h5>${val.title}</h5></a>
+                                        <p>${val.description}</p>
+                                        <p>
+                                        <a class="post-date"><i class="pad fal fa-clock"></i>${changedate}</a>
+                                        <a onClick="funcViewArticleLove('${val.id}', '${val.title}', '${val.thumb}', '${val.link}', '${val.description}','${val.publish_date}')"><i class="far fa-heart"></i></a>
+                                        </p>      
+                                        </div>
+                                    </div>
+                                </div>`
             });
             elmAreaLeftContent.after(xhtml);
         });
@@ -218,8 +224,7 @@ showArticleViewed = (data) => {
     // elmAreaArticleViewed.nextAll('div').remove();
     let xhtml = '';
     $.each( data, function( key, val ) {
-        console.log(val);
-        xhtml = `<div class="single-blog-post wow fadeInUpBig fixHeightOldPage" data-wow-delay="0.2s">
+        xhtml += `<div class="single-blog-post wow fadeInUpBig fixHeightOldPage" data-wow-delay="0.2s">
                     <!-- Post Thumbnail -->
                     <div class="post-thumbnail">
                         <img src="${val.thumb}" alt="${val.link}">
@@ -267,4 +272,33 @@ function activeMenu2(){
         })
     }
     
+}
+
+// // Đổ danh sách bài viết yêu thích
+showArticleViewedLove = (dataLove) => {
+    
+    // Đổ dữ liệu ra category news
+    // elmAreaArticleViewed.nextAll('div').remove();
+    let xhtml = '';
+    $.each( dataLove, function( key, val ) {
+        var dateFormat = val.publish_date
+        let changedate = moment(dateFormat).format('DD-MM-YYYY');
+        xhtml += `  <div class=" single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig" data-wow-delay="0.2s">
+                            <!-- Post Thumbnail -->
+                            <div class="post-thumbnail">
+                                <img src="${val.thumb}" alt="${val.link}">
+                            </div>
+                            <!-- Post Content -->
+                            <div class="post-content">
+                                <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2"><h5>${val.title}</h5></a>
+                                <p>${val.description}</p>
+                                <a class="post-date"><i class="pad fal fa-clock"></i>${changedate}</a>
+                                <a href="javascript:void(0)" onClick="funcDeleteArticleViewedLove('${val.id}')"><i class="fixIconHearLove fas fa-heart"></i></a>     
+                                </div>
+                                    
+                            </div>
+                        </div>`
+    });
+    elmAreaArticleViewedLove.after(xhtml);
+
 }

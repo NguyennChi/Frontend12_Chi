@@ -545,7 +545,7 @@ img {
         color: #0000ff; }
   
  .fixContentHeight{
-          height: 450px;
+          height: 480px;
           margin-bottom: 20px;
         }
 .fixHeightOldPage{
@@ -553,14 +553,14 @@ img {
           margin-bottom: 20px;
         }
   .single-blog-post .post-content {
-    padding: 5px 15px;
+    padding: 0px 7px;
     margin-bottom: 20px;
      }
     .single-blog-post .post-content .headline h5 {
       font-size: 18px;
       margin-bottom: 10px; }
-      .padate{
-        padding-bottom: 5px;
+      .pad{
+        padding-right: 5px;
       }
     .single-blog-post .post-content p {
       margin-bottom: 20px; }
@@ -622,6 +622,7 @@ img {
     text-align: center;
     padding: 0;
     position: absolute;
+    color: #ffffff;
     width: calc(100% - 30px);
     height: calc(100% - 30px);
     top: 15px;
@@ -643,6 +644,7 @@ img {
       .single-blog-post.post-style-3 .post-content .post-tag a:hover, .single-blog-post.post-style-3 .post-content .post-tag a:focus {
         background-color: #0000ff;
         color: #ffffff; }
+
     .single-blog-post.post-style-3 .post-content .headline h5 {
       font-size: 18px;
       color: #ffffff; }
@@ -675,7 +677,7 @@ img {
           flex: 0 0 250px;
           min-width: 250px; } }
     .single-blog-post.post-style-4 .post-content {
-      padding: 5px 30px 5px 5px; }
+      padding: 0px 5px 0px 0px; }
       .single-blog-post.post-style-4 .post-content .headline h5 {
         font-size: 18px;
         margin-bottom: 10px; }
@@ -1340,13 +1342,15 @@ div.area-coin-item span.green {
   border: none;
   border-radius: 5px;
   color: white;
-  padding: 5px 15px;
-  text-align: center;
-  text-decoration: none;
-  margin: 12px;
+  padding: 5px 7px;
   font-size: 12px;
   cursor: pointer;
-  
+  transform: translateX(-40%);
 }
-
+.fixIconHear{
+  padding-left: 10px;
+}
+.fixIconHearLove{
+  color: #db4437;
+}
 /*# sourceMappingURL=style.css.map */

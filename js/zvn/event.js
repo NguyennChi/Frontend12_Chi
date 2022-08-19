@@ -1,5 +1,4 @@
-
-
+// BÀI VIẾT ĐÃ XEM
 funcDeleteTask = (id) => {
     let text = "DELETE!\nBạn chắc chắn muốn xoá công việc";
     if (confirm(text) == true) {
@@ -20,11 +19,8 @@ funcSubmitForm = () => {
     }else{ // edit
         items = editItem(valueID, valueName, valueLevel);
     }
-
     // Load lại danh sách
-    showItems(items);
-
-   
+    showItems(items);  
 }
 
 funcViewArticle = (id, title, thumb, link ) => {
@@ -33,10 +29,18 @@ funcViewArticle = (id, title, thumb, link ) => {
     showArticleViewed(items);
 }
 
-funcDeleteArticleViewed= (id) => {
+// TRANG YÊU THÍCH
+
+funcViewArticleLove = (id, title, thumb, link, description, publish_date ) => {
+    let items       = [];
+    items = addItemLove(id, title, thumb, link, description, publish_date);
+    showArticleViewedLove(items);
+}
+
+funcDeleteArticleViewedLove= (id) => {
     let text = "DELETE!\nBạn chắc chắn muốn xoá bài viết này";
     if (confirm(text) == true) {
-        let items = deleteItem(id);
-        showArticleViewed(items);
+        let items = deleteItemLove(id);
+        showArticleViewedLove(items);
     } 
 }
