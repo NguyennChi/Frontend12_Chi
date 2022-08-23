@@ -44,3 +44,13 @@ funcDeleteArticleViewedLove= (id) => {
         showArticleViewedLove(items);
     } 
 }
+
+funcSearch=(value)=>{
+
+   if (value='hai') {
+    console.log('vao');
+   } else {
+    console.log('ra');
+   }
+    
+}

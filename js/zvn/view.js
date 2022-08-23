@@ -311,8 +311,9 @@ showVideoList = () => {
 }
 // Tìm kiếm
 showArticleSearch = () => {
+    let keyWord = 'hai'
     let xhtml = '';
-        $.getJSON(API_PREFIX + `articles/search?q=hai&offset=0&limit=15&sort_by=id&sort_dir=desc`, function(data) {
+        $.getJSON(API_PREFIX + `articles/search?q=${keyWord}&offset=0&limit=15&sort_by=id&sort_dir=desc`, function(data) {
             $.each( data, function( key, val ) {  
                 var dateFormat = val.publish_date
                 let changedate = moment(dateFormat).format('DD-MM-YYYY');
