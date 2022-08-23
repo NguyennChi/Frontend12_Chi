@@ -151,38 +151,7 @@ showLatestArticle = (total) => {
 } 
 // đổi ngày
    
-// Đổ video ra trang chủ
-showVideo = () => {
-    let xhtml = '';
-    // Đổ dữ liệu ra category news
-    $.getJSON( API_PREFIX + `playlists?offset=0&limit=1&sortBy=id&sort_dir=asc&type=course`, function( data ) {
-        $.each( data, function( key, val ) {
-            console.log(val.title); 
-                xhtml += `<div class="single-blog-post wow fadeInUpBig" data-wow-delay="0.4s">
-                                <!-- Post Thumbnail -->
-                                <div class="post-thumbnail">
-                                    <img src="img/blog-img/b8.jpg" alt="">
-                                    <!-- Catagory -->
-                                    <div class="post-cta"><a href="#">travel</a></div>
-                                    <!-- Video Button -->
-                                    <a href="https://www.youtube.com/watch?v=IhnqEwFSJRg" class="video-btn"><i class="fa fa-play"></i></a>
-                                </div>
-                                <!-- Post Content -->
-                                <div class="post-content">
-                                    <a href="#" class="headline">
-                                        <h5>${val.title}</h5>
-                                    </a>
-                                    <p>How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in...</p>
-                                    <!-- Post Meta -->
-                                    <div class="post-meta">
-                                        <p><a href="#" class="post-author">Katy Liu</a> on <a href="#" class="post-date">Sep 29, 2017 at 9:48 am</a></p>
-                                    </div>
-                                </div>
-                            </div>`
-        });
-        elmAreaVideo.html(xhtml);
-    });
-}
+
 // Đổ danh sách category và bài viết của category ngoài trang chủ
 showCategoryDetail = () => {
     $.each( arrCategoryInHome, function( key, value ) {
@@ -205,7 +174,8 @@ showCategoryDetail = () => {
                                         <p>${val.description}</p>
                                         <p>
                                         <a class="post-date"><i class="pad fal fa-clock"></i>${changedate}</a>
-                                        <a onClick="funcViewArticleLove('${val.id}', '${val.title}', '${val.thumb}', '${val.link}', '${val.description}','${val.publish_date}')"><i class="far fa-heart"></i></a>
+                                        <a onClick="funcViewArticleLove('${val.id}', '${val.title}', '${val.thumb}', '${val.link}', '${val.description}','${val.publish_date}')">
+                                        <i class="far fa-heart"></i></a>
                                         </p>      
                                         </div>
                                     </div>
@@ -300,5 +270,75 @@ showArticleViewedLove = (dataLove) => {
                         </div>`
     });
     elmAreaArticleViewedLove.after(xhtml);
+
+}
+
+// Đổ videolist
+showVideoList = () => {
+    let xhtml = '';
+    $.getJSON( API_PREFIX + `playlists/1/videos?offset=0&limit=12&sort_by=id&sort_dir=asc`, function( data ) {
+        $.each(data, function (key,val) { 
+            let thumb = val.thumbnail;
+            let img = JSON.parse(thumb.replace(/[\\]/g, ""));
+            let thumbVideo = img.standard.url;
+            var dateFormat = val.published_at;
+            let changedate = moment(dateFormat).format('DD-MM-YYYY');
+            xhtml += ` <div class="col-12 col-md-6 ">
+            <!-- Single Blog Post -->
+            <div class="single-blog-post wow fadeInUpBig fixContentHeight" data-wow-delay="0.2s">
+                <!-- Post Thumbnail -->
+                <div class="post-thumbnail">
+                    <img class="fixImgHeight" src="${thumbVideo}" alt="">
+                </div>
+                <!-- Post Content -->
+                <div class="post-content">
+                <a href="" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${thumbVideo}', '${val.link}')" class="post-title mb-2"><h5>${val.title}</h5></a>
+                    <p>${val.description}</p>
+                    <p class="post-date">
+                    <a><i class="pad fal fa-clock"></i></a>${changedate}
+                    </a>
+                    <a onClick="funcViewArticleLove('${val.id}', '${val.title}', '${val.thumb}', '${val.link}', '${val.description}','${val.publish_date}')"><i class=" far fa-heart"></i></a></p>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>`      
+        });
+                
+        elmAreaVideoList.html(xhtml);
+    });
+        
+}
+// Tìm kiếm
+showArticleSearch = () => {
+    let xhtml = '';
+        $.getJSON(API_PREFIX + `articles/search?q=hai&offset=0&limit=15&sort_by=id&sort_dir=desc`, function(data) {
+            $.each( data, function( key, val ) {  
+                var dateFormat = val.publish_date
+                let changedate = moment(dateFormat).format('DD-MM-YYYY');
+                    xhtml += `         <div class="col-12 col-md-6 ">
+                                            <!-- Single Blog Post -->
+                                            <div class="single-blog-post wow fadeInUpBig fixContentHeight" data-wow-delay="0.2s">
+                                                <!-- Post Thumbnail -->
+                                                <div class="post-thumbnail">
+                                                    <img class="fixImgHeight" src="${val.thumb}" alt="${val.link}">
+                                                </div>
+                                                <!-- Post Content -->
+                                                <div class="post-content">
+                                                <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2"><h5>${val.title}</h5></a>
+                                                    <p>${val.description}</p>
+                                                    <p class="post-date">
+                                                    <a><i class="pad fal fa-clock"></i></a>
+                                                    ${changedate}</a>
+                                                    <a onClick="funcViewArticleLove('${val.id}', '${val.title}', '${val.thumb}', '${val.link}', '${val.description}','${val.publish_date}')"><i class=" far fa-heart"></i></a></p>
+                                                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>`
+                                    
+            });
+            elmAreaListSearch.html(xhtml);
+        });
 
 }

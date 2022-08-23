@@ -20,7 +20,7 @@ $(document).ready(function () {
         showTitleArticleInCategory(categoryID);
     }  
     // đổ video
-    showVideo();
+    // showVideo();
     // 3 tin tức mới nhất
     showLatestArticle(3);
 
@@ -34,8 +34,14 @@ $(document).ready(function () {
     // hiển thị category footer
     showCategoryFooter();
 
-    // // Hiển thị bài viết yêu thích
+    // Hiển thị bài viết yêu thích
     let dataLove = listItemsLove();
     showArticleViewedLove(dataLove);
+
+    // Hiển thị videolist
+    showVideoList();
+    
+    // Tìm kiếm
+    showArticleSearch ();
 });
 
