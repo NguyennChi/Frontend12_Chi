@@ -46,11 +46,12 @@ funcDeleteArticleViewedLove= (id) => {
 }
 
 funcSearch=(value)=>{
-
-   if (value='hai') {
-    console.log('vao');
-   } else {
-    console.log('ra');
-   }
+console.log(value);
+<a href="lovePage.html"></a>
+//    if (value='hai') {
+//     console.log('vao');
+//    } else {
+//     console.log('ra');
+//    }
     
 }
