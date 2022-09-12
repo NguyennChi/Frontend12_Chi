@@ -45,13 +45,22 @@ funcDeleteArticleViewedLove= (id) => {
     } 
 }
 
-funcSearch=(value)=>{
-console.log(value);
-<a href="lovePage.html"></a>
-//    if (value='hai') {
-//     console.log('vao');
-//    } else {
-//     console.log('ra');
-//    }
+// funcSearch=()=>{
+    // document.getElementById("search").value = "";
+    // console.log(value);
+    var input = document.getElementById("search");
+    input.addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        let searchValue = $(this).val();
+
+        if(searchValue.length > 2){
+            window.location.href = "http://127.0.0.1:5500/search.html?key=" + searchValue
+            console.log('vao');
+        }else{
+            alert("Nhap vao gia tri muon tim")
+        }
+      }
+    });
     
-}
+// }
