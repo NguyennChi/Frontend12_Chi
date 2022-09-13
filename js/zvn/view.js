@@ -283,22 +283,17 @@ showVideoList = () => {
             let thumbVideo = img.standard.url;
             var dateFormat = val.published_at;
             let changedate = moment(dateFormat).format('DD-MM-YYYY');
-            xhtml += ` <div class="col-12 col-md-6 ">
+            xhtml += ` <div class="col-12 col-md-3 mb">
             <!-- Single Blog Post -->
-            <div class="single-blog-post wow fadeInUpBig fixContentHeight" data-wow-delay="0.2s">
+            <div class="heightVideo single-blog-post wow fadeInUpBig" data-wow-delay="0.2s">
                 <!-- Post Thumbnail -->
                 <div class="post-thumbnail">
-                    <img class="fixImgHeight" src="${thumbVideo}" alt="">
+                    <img src="${thumbVideo}" alt="">
                 </div>
                 <!-- Post Content -->
                 <div class="post-content">
-                <a href="" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${thumbVideo}', '${val.link}')" class="post-title mb-2"><h5>${val.title}</h5></a>
-                    <p>${val.description}</p>
-                    <p class="post-date">
-                    <a><i class="pad fal fa-clock"></i></a>${changedate}
-                    </a>
-                    <a onClick="funcViewArticleLove('${val.id}', '${val.title}', '${val.thumb}', '${val.link}', '${val.description}','${val.publish_date}')"><i class=" far fa-heart"></i></a></p>
-                    
+                <h5 target="_blank">${val.title}</h5>
+                <a><i class="pad fal fa-clock"></i>${changedate}</a>      
                     </div>
                 </div>
             </div>
@@ -342,4 +337,9 @@ showArticleSearch = () => {
             elmAreaListSearch.html(xhtml);
         });
 
+}
+
+// footer
+showFooter = () => {
+        
 }
