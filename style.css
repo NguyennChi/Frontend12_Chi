@@ -57,7 +57,8 @@ a {
   outline: none;
   font-size: 14px;
   font-weight: 400;
-  color:    #ffffff;}
+  color:    #ffffff;
+}
   a:hover, a:focus {
     -webkit-transition-duration: 500ms;
     transition-duration: 500ms;
