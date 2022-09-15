@@ -46,5 +46,8 @@ $(document).ready(function () {
     
     // xóa cv
     // funcDeleteArticleViewed();
-});
 
+    funcIconChange();
+
+
+});

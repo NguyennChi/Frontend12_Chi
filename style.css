@@ -1278,9 +1278,9 @@ div.area-coin-item span.green {
     flex-wrap: wrap; }
     .footer-area .footer-single-widget .footer-menu li {
       -webkit-box-flex: 0;
-      -ms-flex: 0 0 33.3333%;
-      flex: 0 0 33.3333%;
-      min-width: 33.3333%; }
+      -ms-flex: 0 0 25%;
+      flex: 0 0 25%;
+      min-width: 25%; }
       .footer-area .footer-single-widget .footer-menu li a {
         padding: 7.5px 5px;
         display: flex; }
@@ -1374,5 +1374,14 @@ div.area-coin-item span.green {
 }
 .fixH5{
   line-height: 22px;
+}
+.styleHeart{
+  color: red;
+  cursor: pointer;
+}
+
+.fa-heart {
+  color: gray;
+  cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */

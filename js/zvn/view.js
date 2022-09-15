@@ -174,8 +174,8 @@ showCategoryDetail = () => {
                                         <p>${val.description}</p>
                                         <p >
                                         <a class="post-date"><i class="pad fal fa-clock"></i>${changedate}</a>
-                                        <a onClick="funcViewArticleLove('${val.id}', '${val.title}', '${val.thumb}', '${val.link}', '${val.description}','${val.publish_date}')">
-                                        <i class="far fa-heart"></i></a>
+                                        <a onClick="funcViewArticleLove('${val.id}', '${val.title}', '${val.thumb}', '${val.link}', '${val.description}','${val.publish_date}')"> </a>
+                                        <span onClick="funcIconChange(${val.id})"><i class="far fa-heart"></i></span>
                                         </p>      
                                         </div>
                                     </div>
@@ -193,7 +193,6 @@ showArticleViewed = (data) => {
     // elmAreaArticleViewed.nextAll('div').remove();
     let xhtml = '';
     $.each( data, function( key, val ) {
-        console.log(val);
         xhtml += `<div class="single-blog-post wow fadeInUpBig fixHeightOldPage" data-wow-delay="0.2s">
                     <!-- Post Thumbnail -->
                     <div class="post-thumbnail">
@@ -263,13 +262,11 @@ showArticleViewedLove = (dataLove) => {
                                 <p>${val.description}</p>
                                 <a class="post-date"><i class="pad fal fa-clock"></i>${changedate}</a>
                                 <a href="javascript:void(0)" onClick="funcDeleteArticleViewedLove('${val.id}')"><i class="fixIconHearLove fas fa-heart"></i></a>     
-                                </div>
-                                    
+                                </div>                           
                             </div>
                         </div>`
     });
     elmAreaArticleViewedLove.after(xhtml);
-
 }
 
 // Đổ videolist
@@ -300,9 +297,9 @@ showVideoList = () => {
         });
                 
         elmAreaVideoList.html(xhtml);
-    });
-        
+    })        
 }
+
 // Tìm kiếm
 showArticleSearch = () => {
     let keyWord = 'hai'
@@ -330,8 +327,7 @@ showArticleSearch = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>`
-                                    
+                                        </div>`                             
             });
             elmAreaListSearch.html(xhtml);
         });
@@ -342,23 +338,3 @@ showArticleSearch = () => {
 showFooter = () => {
         
 }
-// showItemsArticleViewed  = (items) => {
-//     let xhtml = "";
-//     let search     = elemInputSearch.value;
-//     items.forEach((item, index) => {
-//         item.name = item.name.replace(new RegExp(search, "ig"), "<span class='hightlight'>"+search+"</span>");
-//         xhtml += `<tr>
-//                     <td class="text-center">`+(index+1)+`</td>
-//                     <td>`+item.name+`</td>
-//                     <td class="text-center">`+showItemLevel(item.level)+`</td>
-//                     <td>
-//                         <button type="button" onclick="funcEditTask('`+item.id+`')" class="btn btn-warning">Edit</button>
-//                         <button type="button" onclick="funcDeleteTask('`+item.id+`')" class="btn btn-danger">Delete</button>
-//                     </td> 
-//                 </tr>`;
-        
-//     }); 
-    
-//     elemAreaListTask.innerHTML = xhtml;
-   
-// }

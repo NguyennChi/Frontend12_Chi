@@ -18,7 +18,6 @@ deleteItem = (id) => {
   let items = listItems(); 
   items = items.filter(item => item.id !== id);
   saveStorage(items);
-  loadStorage(items)
   return items;
 }
 

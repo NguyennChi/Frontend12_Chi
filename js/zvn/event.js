@@ -2,9 +2,9 @@
 funcDeleteArticleViewed = (id) => {
     let text = "DELETE!\nBạn chắc chắn muốn xoá bài viết này";
     if (confirm(text) == true) {
-        let data = deleteItem(id);
+        let items = deleteItem(id);
         location.reload()
-        showArticleViewed(data);
+        showArticleViewed(items);
     } 
 
 }
@@ -66,25 +66,20 @@ funcDeleteArticleViewedLove= (id) => {
         }
       }
     });
+
+
+
+
+let stateL   = "off";
+funcIconChange=(id)=>{
+let elemLight = document.getElementById(id);
+  if (stateL ==  "off") {
+    // elemLight.classList.remove('far');
+console.log(stateL);
+    stateL="on";
+  } else {
+    console.log(stateL);
+    stateL = "off"
+  }
     
-// }
-// funcNotifi = (id) =>{
-//     items = addItemLove(id);
-//     console.log(items);
-//     // $(".pos-demo").notify(
-//     //     "I'm to the right of this box", 
-//     //     { position:"right" }
-//     //   );
-//     // let elemfa = document.getElementById(id);
-//     // if (stateL ==  "off") {
-//     //     elemfa.src = "./image/turn_on.jpg".notify(
-//     //         "I'm to the right of this box", 
-//     //         { position:"right" }
-//     //       );;
-//     //     stateL="on";
-//     // } else {
-//     //     elemfa.src = "./image/turn_off.jpg";
-//     //     stateL = "off"
-//     // }
-          
-//   }
+}
