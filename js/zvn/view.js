@@ -174,8 +174,8 @@ showCategoryDetail = () => {
                                         <p>${val.description}</p>
                                         <p >
                                         <a class="post-date"><i class="pad fal fa-clock"></i>${changedate}</a>
-                                        <a onClick="funcViewArticleLove('${val.id}', '${val.title}', '${val.thumb}', '${val.link}', '${val.description}','${val.publish_date}')"> </a>
-                                        <span onClick="funcIconChange(${val.id})"><i class="far fa-heart"></i></span>
+                                        <a onClick="funcViewArticleLove('${val.id}', '${val.title}', '${val.thumb}', '${val.link}', '${val.description}','${val.publish_date}')">
+                                        <span onClick="funcIconChange(${val.id})"><i class="far fa-heart"></i></span> </a>
                                         </p>      
                                         </div>
                                     </div>
