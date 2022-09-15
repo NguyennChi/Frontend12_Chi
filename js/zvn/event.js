@@ -34,6 +34,7 @@ funcViewArticle = (id, title, thumb, link ) => {
 funcViewArticleLove = (id, title, thumb, link, description, publish_date ) => {
     let items       = [];
     items = addItemLove(id, title, thumb, link, description, publish_date);
+
     showArticleViewedLove(items);
 }
 
@@ -62,5 +63,8 @@ funcDeleteArticleViewedLove= (id) => {
         }
       }
     });
-    
+    $("#zvn-area-article-viewed-love").notify(
+        "I'm to the right of this box", 
+        { position:"right" }
+      );
 // }

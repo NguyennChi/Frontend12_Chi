@@ -59,7 +59,7 @@ addItemLove = (id, title, thumb, link, description, publish_date) => {
     let NewLove = {id: id, title: title, thumb: thumb, link:link, description: description, publish_date};
     let items = listItemsLove();
     items.push(NewLove);
-    console.log(items);   
+     
 
     // Lưu item vào storgare
     saveStorageLove(items);

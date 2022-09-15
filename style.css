@@ -1339,10 +1339,10 @@ div.area-coin-item span.green {
   border: none;
   border-radius: 5px;
   color: white;
-  padding: 5px 7px;
+  padding: 3px 7px;
   font-size: 12px;
   cursor: pointer;
-  transform: translateX(-40%);
+  transform: translate(5%,-20%);
 }
 .fixIconHear{
   padding-left: 10px;
@@ -1359,5 +1359,8 @@ div.area-coin-item span.green {
 .navcl{
   background-color: rgba(0, 0, 0, 0.7);
   padding-left: 15px;
+}
+.navbar-nav .dropdown-menu{
+  background-color:rgba(0, 0, 0, 0.7); 
 }
 /*# sourceMappingURL=style.css.map */
