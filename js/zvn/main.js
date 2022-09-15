@@ -43,5 +43,8 @@ $(document).ready(function () {
     
     // Tìm kiếm
     showArticleSearch ();
+    
+    // xóa cv
+    // funcDeleteArticleViewed();
 });
 

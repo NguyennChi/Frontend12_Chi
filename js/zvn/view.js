@@ -189,11 +189,11 @@ showCategoryDetail = () => {
 
 // Đổ danh sách bài viết đã xem
 showArticleViewed = (data) => {
-    
     // Đổ dữ liệu ra category news
     // elmAreaArticleViewed.nextAll('div').remove();
     let xhtml = '';
     $.each( data, function( key, val ) {
+        console.log(val);
         xhtml += `<div class="single-blog-post wow fadeInUpBig fixHeightOldPage" data-wow-delay="0.2s">
                     <!-- Post Thumbnail -->
                     <div class="post-thumbnail">
@@ -201,7 +201,7 @@ showArticleViewed = (data) => {
                     </div>
                     <!-- Post Content -->
                     <div class="fixContentHeight post-content ">
-                        <a href="${val.link}" target="_blank" onClick="funcDeleteTask('${val.id}')" class="post-title mb-2"><h5>${val.title}</h5></a>
+                        <a href="${val.link}" target="_blank" class="post-title mb-2 "><h5 class ="fixH5">${val.title}</h5></a>
                         <!-- Post Meta -->
                         <div class="post-meta ">
                             <a href="javascript:void(0)" onClick="funcDeleteArticleViewed('${val.id}')" class="post-cata cata-sm cata-success">
@@ -342,3 +342,23 @@ showArticleSearch = () => {
 showFooter = () => {
         
 }
+// showItemsArticleViewed  = (items) => {
+//     let xhtml = "";
+//     let search     = elemInputSearch.value;
+//     items.forEach((item, index) => {
+//         item.name = item.name.replace(new RegExp(search, "ig"), "<span class='hightlight'>"+search+"</span>");
+//         xhtml += `<tr>
+//                     <td class="text-center">`+(index+1)+`</td>
+//                     <td>`+item.name+`</td>
+//                     <td class="text-center">`+showItemLevel(item.level)+`</td>
+//                     <td>
+//                         <button type="button" onclick="funcEditTask('`+item.id+`')" class="btn btn-warning">Edit</button>
+//                         <button type="button" onclick="funcDeleteTask('`+item.id+`')" class="btn btn-danger">Delete</button>
+//                     </td> 
+//                 </tr>`;
+        
+//     }); 
+    
+//     elemAreaListTask.innerHTML = xhtml;
+   
+// }

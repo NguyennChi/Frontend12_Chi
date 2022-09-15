@@ -1,28 +1,29 @@
 // BÀI VIẾT ĐÃ XEM
-funcDeleteTask = (id) => {
-    console.log(id);
-    let text = "DELETE!\nBạn chắc chắn muốn xoá công việc";
+funcDeleteArticleViewed = (id) => {
+    let text = "DELETE!\nBạn chắc chắn muốn xoá bài viết này";
     if (confirm(text) == true) {
-        let items = deleteItem(id);
-        showItems(items);
+        let data = deleteItem(id);
+        location.reload()
+        showArticleViewed(data);
     } 
+
 }
 
 
-funcSubmitForm = () => {
-    let valueName   = elemInputName.value;
-    let valueLevel  = elemInputLevel.value;
-    let valueID     = elemInputID.value;
-    let items       = [];
+// funcSubmitForm = () => {
+//     let valueName   = elemInputName.value;
+//     let valueLevel  = elemInputLevel.value;
+//     let valueID     = elemInputID.value;
+//     let items       = [];
     
-    if(valueID == ""){ // add
-        items = addItem(valueName, valueLevel);
-    }else{ // edit
-        items = editItem(valueID, valueName, valueLevel);
-    }
-    // Load lại danh sách
-    showItems(items);  
-}
+//     if(valueID == ""){ // add
+//         items = addItem(valueName, valueLevel);
+//     }else{ // edit
+//         items = editItem(valueID, valueName, valueLevel);
+//     }
+//     // Load lại danh sách
+//     showItems(items);  
+// }
 
 funcViewArticle = (id, title, thumb, link ) => {
     let items       = [];
@@ -43,6 +44,7 @@ funcDeleteArticleViewedLove= (id) => {
     let text = "DELETE!\nBạn chắc chắn muốn xoá bài viết này";
     if (confirm(text) == true) {
         let items = deleteItemLove(id);
+        location.reload()
         showArticleViewedLove(items);
     } 
 }

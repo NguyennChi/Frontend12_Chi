@@ -18,6 +18,7 @@ deleteItem = (id) => {
   let items = listItems(); 
   items = items.filter(item => item.id !== id);
   saveStorage(items);
+  loadStorage(items)
   return items;
 }
 
@@ -65,8 +66,8 @@ addItemLove = (id, title, thumb, link, description, publish_date) => {
 
     return items;
 }
-notifi = (id)=>{
-    let items = listItemsLove(); 
-    items = items.filter(item => item.id !== id);
-    return items;
-}
+// notifi = (id)=>{
+//     let items = listItemsLove(); 
+//     items = items.filter(item => item.id !== id);
+//     return items;
+// }
