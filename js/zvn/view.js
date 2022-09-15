@@ -137,7 +137,7 @@ showLatestArticle = (total) => {
                                             <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="headline"><h5>${val.title}</h5></a>
                                             <!-- Post Meta -->
                                             <div class="post-meta">
-                                                <p>
+                                                <p class="colorDate">
                                                 <a class="post-date"><i class="fal fa-clock"></i>  ${changedate}</a>
                                                 </p>
                                             </div>
@@ -157,7 +157,7 @@ showCategoryDetail = () => {
     $.each( arrCategoryInHome, function( key, value ) {
         let xhtml = '';
         $.getJSON( API_PREFIX + `categories_news/${value}/articles?offset=0&limit=4&sort_by=id&sort_dir=desc`, function( data ) { 
-            xhtml = `<div class="title">
+            xhtml = `<div class="title fix">
                         <h5>${(data[0].category.name).toUpperCase()}</h5>
                     </div>`
             $.each( data, function( key, val ) {
@@ -169,10 +169,10 @@ showCategoryDetail = () => {
                                         <img src="${val.thumb}" alt="${val.link}">
                                     </div>
                                     <!-- Post Content -->
-                                    <div class="post-content">
+                                    <div class="post-content-fix">
                                         <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2"><h5>${val.title}</h5></a>
                                         <p>${val.description}</p>
-                                        <p>
+                                        <p >
                                         <a class="post-date"><i class="pad fal fa-clock"></i>${changedate}</a>
                                         <a onClick="funcViewArticleLove('${val.id}', '${val.title}', '${val.thumb}', '${val.link}', '${val.description}','${val.publish_date}')">
                                         <i class="far fa-heart"></i></a>
@@ -201,7 +201,7 @@ showArticleViewed = (data) => {
                     </div>
                     <!-- Post Content -->
                     <div class="fixContentHeight post-content ">
-                        <a href="${val.link}" target="_blank" onClick="funcViewArticle('${val.id}', '${val.title}', '${val.thumb}', '${val.link}')" class="post-title mb-2"><h5>${val.title}</h5></a>
+                        <a href="${val.link}" target="_blank" onClick="funcDeleteTask('${val.id}')" class="post-title mb-2"><h5>${val.title}</h5></a>
                         <!-- Post Meta -->
                         <div class="post-meta ">
                             <a href="javascript:void(0)" onClick="funcDeleteArticleViewed('${val.id}')" class="post-cata cata-sm cata-success">
@@ -229,7 +229,6 @@ showCategoryFooter = () => {
 // active menu
 function activeMenu2(){
     var current = location.pathname.split('/').pop();
-    console.log(current);
     if(current!= '' || current==undefined){
         $('.navbar-nav li.nav-item a').each(function(){
             var $this = $(this);

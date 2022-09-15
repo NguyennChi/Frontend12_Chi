@@ -1,5 +1,6 @@
 // BÀI VIẾT ĐÃ XEM
 funcDeleteTask = (id) => {
+    console.log(id);
     let text = "DELETE!\nBạn chắc chắn muốn xoá công việc";
     if (confirm(text) == true) {
         let items = deleteItem(id);
@@ -63,8 +64,25 @@ funcDeleteArticleViewedLove= (id) => {
         }
       }
     });
-    $("#zvn-area-article-viewed-love").notify(
-        "I'm to the right of this box", 
-        { position:"right" }
-      );
+    
 // }
+// funcNotifi = (id) =>{
+//     items = addItemLove(id);
+//     console.log(items);
+//     // $(".pos-demo").notify(
+//     //     "I'm to the right of this box", 
+//     //     { position:"right" }
+//     //   );
+//     // let elemfa = document.getElementById(id);
+//     // if (stateL ==  "off") {
+//     //     elemfa.src = "./image/turn_on.jpg".notify(
+//     //         "I'm to the right of this box", 
+//     //         { position:"right" }
+//     //       );;
+//     //     stateL="on";
+//     // } else {
+//     //     elemfa.src = "./image/turn_off.jpg";
+//     //     stateL = "off"
+//     // }
+          
+//   }

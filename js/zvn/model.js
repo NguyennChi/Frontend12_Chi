@@ -56,13 +56,17 @@ deleteItemLove = (id) => {
 }
 
 addItemLove = (id, title, thumb, link, description, publish_date) => {
+
     let NewLove = {id: id, title: title, thumb: thumb, link:link, description: description, publish_date};
     let items = listItemsLove();
     items.push(NewLove);
-     
-
     // Lưu item vào storgare
     saveStorageLove(items);
 
+    return items;
+}
+notifi = (id)=>{
+    let items = listItemsLove(); 
+    items = items.filter(item => item.id !== id);
     return items;
 }
